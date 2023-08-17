@@ -60,7 +60,7 @@ services:
       - certs:/etc/letsencrypt
       - html:/usr/share/nginx/html
     depends_on:
-      - cerbot
+      - nginx
 
 volumes:
   pgdata:
