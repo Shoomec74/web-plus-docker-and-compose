@@ -42,8 +42,8 @@ services:
   nginx:
     image: nginx:latest
     volumes:
-      - ./backend/nginx/conf.d/backend.conf:/etc/nginx/conf.d/
-      - ./frontend/nginx/conf.d/frontend.conf:/etc/nginx/conf.d/
+      - ./backend/nginx/conf.d/backend.conf:/etc/nginx/conf.d/backend.conf
+      - ./frontend/nginx/conf.d/frontend.conf:/etc/nginx/conf.d/frontend.conf
       - certs:/etc/letsencrypt
     ports:
       - 80:80
