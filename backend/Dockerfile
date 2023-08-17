@@ -11,6 +11,7 @@ COPY package*.json ./
 RUN npm ci --no-audit --no-fund --omit=dev && npm i --no-audit --no-fund -g pm2
 COPY --from=builder /app/dist ./dist
 #COPY  .env ./dist
+COPY nginx/conf.d/backend.conf /etc/nginx/conf.d
 COPY  ecosystem.config.js .
 VOLUME /var/lib/postgresql/data
 ENTRYPOINT pm2-runtime start ecosystem.config.js
