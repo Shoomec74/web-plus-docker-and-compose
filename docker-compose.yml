@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    env_file: ./backend/.env
+    container_name: kupipodariday-backend
+    ports:
+      - '4000:3000'
+    depends_on:
+      - database
+    restart: always
+    networks: 
+      - database
+      - default
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: kupipodariday-frontend
+    ports:
+      - "8081:80"
+
+  database:
+    image: postgres:12
+    container_name: kupipodariday-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-student}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-student}
+      POSTGRES_PORT: ${POSTGRES_PORT:-5432}
+      POSTGRES_DB: ${POSTGRES_DB:-kupipodariday}
+      POSTGRES_PGDATA: ${POSTGRES_PGDATA:-/var/lib/postgresql/data}
+    volumes:
+      - pgdata:${POSTGRES_PGDATA:-/var/lib/postgresql/data}
+    restart: always
+    networks: 
+      - database
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./backend/nginx/conf.d/backend.conf:/etc/nginx/conf.d/backend.conf
+      - ./frontend/nginx/conf.d/frontend.conf:/etc/nginx/conf.d/frontend.conf
+      - certs:/etc/letsencrypt
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - frontend
+      - backend
+
+
+  certbot:
+    image: certbot/certbot
+    command: certonly —webroot —webroot-path=/usr/share/nginx/html —email your-email@example.com —agree-tos —no-eff-email —staging -d kupipodariday.nomoreparties.co -d api.kupipodariday.nomoreparties.co
+    volumes:
+      - certs:/etc/letsencrypt
+      - html:/usr/share/nginx/html
+    depends_on:
+      - cerbot
+
+volumes:
+  pgdata:
+  certs:
+  html:
+
+networks:
+  database:
+    driver: bridge
