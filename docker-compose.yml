@@ -46,8 +46,8 @@ services:
       - ./frontend/nginx/conf.d/frontend.conf:/etc/nginx/conf.d/frontend.conf
       - certs:/etc/letsencrypt
     ports:
-      - 880:80
-      - 8443:443
+      - 80:80
+      - 443:443
     depends_on:
       - frontend
       - backend
