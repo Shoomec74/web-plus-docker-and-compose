@@ -42,8 +42,8 @@ services:
   nginx:
     image: nginx:latest
     volumes:
-      - ./backend/nginx/conf.d/backend.conf:/etc/nginx/conf.d/backend.conf
-      - ./frontend/nginx/conf.d/frontend.conf:/etc/nginx/conf.d/frontend.conf
+      - ./backend/nginx/conf.d/backend.conf:/etc/nginx/conf.d/
+      - ./frontend/nginx/conf.d/frontend.conf:/etc/nginx/conf.d/
       - certs:/etc/letsencrypt
     ports:
       - 80:80
@@ -52,20 +52,10 @@ services:
       - frontend
       - backend
 
-
-  certbot:
-    image: certbot/certbot
-    command: certonly —webroot —webroot-path=/usr/share/nginx/html —email shoomec@yandex.ru —agree-tos —no-eff-email —staging -d kupipodariday.nomoreparties.co -d api.kupipodariday.nomoreparties.co
-    volumes:
-      - certs:/etc/letsencrypt
-      - html:/usr/share/nginx/html
-    depends_on:
-      - nginx
-
 volumes:
   pgdata:
   certs:
-  html:
+
 
 networks:
   database:
