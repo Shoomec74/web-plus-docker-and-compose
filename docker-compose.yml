@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.0'
 
 services:
   backend:
@@ -55,7 +55,7 @@ services:
 
   certbot:
     image: certbot/certbot
-    command: certonly —webroot —webroot-path=/usr/share/nginx/html —email your-email@example.com —agree-tos —no-eff-email —staging -d kupipodariday.nomoreparties.co -d api.kupipodariday.nomoreparties.co
+    command: certonly —webroot —webroot-path=/usr/share/nginx/html —email shoomec@yandex.ru —agree-tos —no-eff-email —staging -d kupipodariday.nomoreparties.co -d api.kupipodariday.nomoreparties.co
     volumes:
       - certs:/etc/letsencrypt
       - html:/usr/share/nginx/html
