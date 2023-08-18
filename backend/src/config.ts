@@ -49,7 +49,8 @@ ALLOW_URL,
         DATABASE_NAME:'kupipodariday',
         DATABASE_USERNAME:'student',
         DATABASE_PASSWORD:'student',
-        ALLOW_URL:'kupipodariday.nomoreparties.co'
+        ALLOW_URL:'http://kupipodariday.nomoreparties.co'
+        //ALLOW_URL:'http://localhost:8081'
     };
   }
   
