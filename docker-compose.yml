@@ -32,7 +32,6 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-student}
       POSTGRES_PORT: ${POSTGRES_PORT:-5432}
       POSTGRES_DB: ${POSTGRES_DB:-kupipodariday}
-      POSTGRES_PGDATA: ${POSTGRES_PGDATA:-/var/lib/postgresql/data}
     volumes:
       - pgdata:${POSTGRES_PGDATA:-/var/lib/postgresql/data}
     restart: always
