@@ -5,7 +5,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    env_file: ./backend/.env.example
+    env_file: ./backend/.env
     container_name: kupipodariday-backend
     ports:
       - '4000:3000'

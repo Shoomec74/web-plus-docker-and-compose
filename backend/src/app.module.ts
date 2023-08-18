@@ -22,6 +22,8 @@ import {DATABASE_TYPE,
   DATABASE_PASSWORD,
 } from './config';
 
+console.log(DATABASE_NAME);
+
 @Module({
   imports: [
     ConfigModule.forRoot({
