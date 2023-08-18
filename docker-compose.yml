@@ -42,6 +42,7 @@ services:
   nginx:
     image: nginx:latest
     volumes:
+      - nginx-config:/etc/nginx/conf.d
       - ./backend/nginx/conf.d/backend.conf:/etc/nginx/conf.d/backend.conf
       - ./frontend/nginx/conf.d/frontend.conf:/etc/nginx/conf.d/frontend.conf
       - certs:/etc/letsencrypt
@@ -55,6 +56,7 @@ services:
 volumes:
   pgdata:
   certs:
+  nginx-config:
 
 
 networks:
