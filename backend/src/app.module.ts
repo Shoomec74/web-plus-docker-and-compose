@@ -14,15 +14,7 @@ import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
 import { HashModule } from './hash/hash.module';
 import { ConfigModule } from '@nestjs/config';
-import {DATABASE_TYPE,
-  DATABASE_URL,
-  DATABASE_PORT,
-  DATABASE_NAME,
-  DATABASE_USERNAME,
-  DATABASE_PASSWORD,
-} from './config';
-
-console.log(DATABASE_NAME);
+import config from './config';
 
 @Module({
   imports: [
@@ -30,12 +22,12 @@ console.log(DATABASE_NAME);
       envFilePath: ['.env.testing', '.env.development', '.env'],
     }),
     TypeOrmModule.forRoot({
-      type: DATABASE_TYPE as any,
-      host: DATABASE_URL,
-      port: +DATABASE_PORT,
-      username: DATABASE_USERNAME,
-      password: DATABASE_PASSWORD,
-      database: DATABASE_NAME,
+      type: config.DATABASE_TYPE as any,
+      host: config.DATABASE_URL,
+      port: +config.DATABASE_PORT,
+      username: config.DATABASE_USERNAME,
+      password: config.DATABASE_PASSWORD,
+      database: config.DATABASE_NAME,
       entities: [User, Wish, Wishlist, Offer],
       synchronize: true,
     }),
