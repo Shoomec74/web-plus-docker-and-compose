@@ -7,5 +7,5 @@ RUN npm run build
 
 FROM nginx:1.23.1-alpine AS prod
 COPY --from=builder /app/build /usr/share/nginx/html
-#COPY nginx/conf.d/frontend.conf /etc/nginx/conf.d
+COPY nginx/conf.d/frontend.conf /etc/nginx/conf.d
 ENTRYPOINT nginx -g "daemon off;"

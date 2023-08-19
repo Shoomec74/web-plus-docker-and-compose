@@ -38,22 +38,8 @@ services:
     networks:
       - database
 
-  nginx:
-    image: nginx:latest
-    volumes:
-      - ./backend/nginx/conf.d/backend.conf:/etc/nginx/conf.d/backend.conf
-      - ./frontend/nginx/conf.d/frontend.conf:/etc/nginx/conf.d/frontend.conf
-      - certs:/etc/letsencrypt
-    ports:
-      - 80:80
-      - 443:443
-    depends_on:
-      - frontend
-      - backend
-
 volumes:
   pgdata:
-  certs:
 
 networks:
   database:
