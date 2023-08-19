@@ -1,3 +1,7 @@
 # Докеризация приложения
 
-Перед тем как приступить к выполнению проектной работы разместите в репозитории исходный код фронтенд и бэкенд частей сервиса КупиПодариДай, реализованного вами ранее. 
+["Страничка вишлистов Купиподаридай"](https://kupipodariday.nomoreparties.co)
+
+IP адрес __158.160.118.192__
+Frontend __https://kupipodariday.nomoreparties.co__
+Backend __https://api.kupipodariday.nomoreparties.co__
