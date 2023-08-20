@@ -23,6 +23,7 @@ services:
     container_name: kupipodariday-frontend
     ports:
       - "8081:80"
+    restart: always
 
   database:
     image: postgres:12
