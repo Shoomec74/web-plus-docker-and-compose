@@ -40,7 +40,7 @@ services:
 #настройки контейнера nginx docker-compose.yml
   nginx:
     image: nginx:latest
-    container_name: kupipodariday-nginx
+    container_name: kupipodariday-hub
     volumes:
       - ./backend/nginx/conf.d/backend.conf:/etc/nginx/conf.d/backend.conf
       - ./frontend/nginx/conf.d/frontend.conf:/etc/nginx/conf.d/frontend.conf
