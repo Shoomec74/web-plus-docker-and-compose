@@ -21,7 +21,7 @@ services:
       dockerfile: Dockerfile
     container_name: kupipodariday-frontend
     volumes:
-      - frontend_data:/usr/share/nginx/html
+      - frontend_data:/app/build
 
   database:
     image: postgres:12
