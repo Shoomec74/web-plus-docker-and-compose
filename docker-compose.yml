@@ -40,13 +40,14 @@ services:
 #настройки контейнера nginx docker-compose.yml
   nginx:
     image: nginx:latest
+    container_name: kupipodariday-nginx
     volumes:
       - ./backend/nginx/conf.d/backend.conf:/etc/nginx/conf.d/backend.conf
       - ./frontend/nginx/conf.d/frontend.conf:/etc/nginx/conf.d/frontend.conf
       - certs:/etc/letsencrypt
       - frontend_data:/usr/share/nginx/html
     ports:
-      - 4000:4000
+      - 8080:8080
       - 8081:8081
       - 8443:443
     depends_on:
