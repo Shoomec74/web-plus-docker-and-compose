@@ -25,6 +25,8 @@ services:
     ports:
       - "8081:80"
     restart: always
+    volumes: 
+      - frontend_data:/usr/share/nginx/html
 
   database:
     image: postgres:12
@@ -42,6 +44,7 @@ services:
 
 volumes:
   pgdata:
+  frontend_data:
 
 networks:
   database:
