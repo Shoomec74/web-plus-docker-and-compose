@@ -34,7 +34,7 @@ services:
     restart: always
     networks:
       - database
-
+#настройки контейнера nginx docker-compose.yml
   nginx:
     image: nginx:latest
     volumes:
